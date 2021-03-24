@@ -22,4 +22,9 @@ public class UserController {
         return users.findAll();
     }
 
+    @GetMapping(path = "/users/{id}")
+    public User getUser(@PathVariable int id) {
+        return users.findById(id);
+    }
+
 }
