@@ -12,6 +12,7 @@ import java.util.List;
 @Repository
 public class UserDao {
     private static List<User> userRepository = new ArrayList<>();
+    private static int currUsers = 3;
 
     static {
         userRepository.add(new User(1, "Sally", new Date()));
@@ -20,7 +21,6 @@ public class UserDao {
 
     }
 
-    int currUsers = 3;
 
     public UserDao() {
     }
@@ -39,9 +39,7 @@ public class UserDao {
     }
 
     public User save(User user) {
-        if (user.getId() == null) {
-            user.setId(currUsers++);
-        }
+        user.setId(++currUsers);
         userRepository.add(user);
         return user;
     }
