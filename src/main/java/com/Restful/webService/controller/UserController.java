@@ -27,4 +27,15 @@ public class UserController {
         return users.findById(id);
     }
 
+    @PostMapping(path = "/users")
+    public ResponseEntity<Object> createUser(@RequestBody User user) {
+        User newUser = users.save(user);
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(newUser.getId())
+                .toUri();
+
+        return ResponseEntity.ok(location);
+    }
+
 }
