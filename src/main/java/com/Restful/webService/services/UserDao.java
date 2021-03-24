@@ -39,7 +39,10 @@ public class UserDao {
     }
 
     public User save(User user) {
-        user.setId(++currUsers);
+
+        if (user.getId() == null || user.getId() < 1) {
+            user.setId(++currUsers);
+        }
         userRepository.add(user);
         return user;
     }
@@ -54,9 +57,9 @@ public class UserDao {
     }
 
     public User update(User user) {
-        user = this.remove(user.getId());
+        User removedUser = this.remove(user.getId());
 
-        if (user == null) {
+        if (removedUser == null) {
             return null;
         }
         this.save(user);
