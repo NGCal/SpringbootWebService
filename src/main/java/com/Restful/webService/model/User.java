@@ -3,7 +3,7 @@ package com.Restful.webService.model;
 import java.util.Date;
 
 public class User {
-    int id;
+    Integer id;
     String name;
     Date birthday;
 
@@ -22,11 +22,11 @@ public class User {
                 '}';
     }
 
-    public int getId() {
+    public Integer getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(Integer id) {
         this.id = id;
     }
 
